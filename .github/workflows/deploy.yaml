@@ -16,13 +16,16 @@ jobs:
       - name: docker build dev
         run: |
           docker build -t abhisharma811/complex-fib -f ./client/Dockerfile.dev ./client
-      - name: docker build all apps
+      - name: build client
         run: |
           docker build -t abhisharma811/multi-client ./client
+      - name: build nginx
         run: |
           docker build -t abhisharma811/multi-nginx ./nginx
+      - name: build server
         run: |
           docker build -t abhisharma811/multi-server ./server
+      - name: build worker
         run: |
           docker build -t abhisharma811/multi-worker ./worker
       - name: run test cases
