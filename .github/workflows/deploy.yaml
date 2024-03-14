@@ -1,0 +1,30 @@
+name: deploy multi-docker
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: docker login
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -P ${{ secrets.DOCKER_PASSWORD }}
+      - name: docker build dev
+        run: |
+          docker build -t abhisharma811/complex-fib -f ./client/Dockerfile.dev ./client
+      # - name: docker build all apps
+      #   run: |
+      #     docker build -t abhisharma811/multi-client ./client
+      #   run: |
+      #     docker build -t abhisharma811/multi-nginx ./nginx
+      #   run: |
+      #     docker build -t abhisharma811/multi-server ./server
+      #   run: |
+      #     docker build -t abhisharma811/multi-worker ./worker
+      # - name: run test cases
+        run: |
+          docker run -e CI=true abhisharma811/complex-fib npm test
