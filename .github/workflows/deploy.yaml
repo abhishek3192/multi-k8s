@@ -16,15 +16,15 @@ jobs:
       - name: docker build dev
         run: |
           docker build -t abhisharma811/complex-fib -f ./client/Dockerfile.dev ./client
-      # - name: docker build all apps
-      #   run: |
-      #     docker build -t abhisharma811/multi-client ./client
-      #   run: |
-      #     docker build -t abhisharma811/multi-nginx ./nginx
-      #   run: |
-      #     docker build -t abhisharma811/multi-server ./server
-      #   run: |
-      #     docker build -t abhisharma811/multi-worker ./worker
+      - name: docker build all apps
+        run: |
+          docker build -t abhisharma811/multi-client ./client
+        run: |
+          docker build -t abhisharma811/multi-nginx ./nginx
+        run: |
+          docker build -t abhisharma811/multi-server ./server
+        run: |
+          docker build -t abhisharma811/multi-worker ./worker
       - name: run test cases
         run: |
           docker run -e CI=true abhisharma811/complex-fib npm test
