@@ -16,6 +16,11 @@ jobs:
       - run: docker build -t abhisharma811/multi-server ./server
       - run: docker build -t abhisharma811/multi-worker ./worker
 
+      - run: docker push abhisharma811/multi-client:latest
+      - run: docker push abhisharma811/multi-nginx:latest
+      - run: docker push abhisharma811/multi-server:latest
+      - run: docker push abhisharma811/multi-worker:latest
+
       - name: run test cases
         run: |
           docker run -e CI=true abhisharma811/complex-fib npm test
