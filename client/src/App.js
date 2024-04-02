@@ -4,7 +4,12 @@ import "./App.css";
 import Fib from "./fib";
 
 function App() {
-  return <Fib />;
+  return (
+    <>
+      <h1>**Fib calculator version 6**</h1>
+      <Fib />
+    </>
+  );
 }
 
 export default App;
